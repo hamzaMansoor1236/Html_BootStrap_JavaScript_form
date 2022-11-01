@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple HTML and JavaScript form</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+<div class="container"> 
+    <div class="container-fluid">
+        <h1>Registration Form</h1>
+        <div clas="row">
+            <div class="col">
+                <label for="phone">Name</label>
+                <input type="text" class="form-control " id="name" required placeholder="John Smith"/>
+            </div>
+
+        </div>
+        <div class="row" >
+            <div class="col">
+                <label for="phone">Phone Number</label>
+                <input type="number" class="form-control " id="phone" required placeholder="03331234567"/>
+            </div>
+            <div class="col">
+                <label for="cnic">CNIC</label>
+                <input type="number" class="form-control " id="cnic" required placeholder="1234512345671"/>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col">
+                <label for="age">Age</label>
+                <input type="number" class="form-control " id="age" required placeholder="03331234567"/>
+            </div>
+            <div class="col">
+          
+                
+            </div>
+        </div>
+       
+        <div class="row">
+            <div class="col">
+                <div class="col-md-12 mt-3">
+
+                    <button class="btn btn-primary btn-lg" onclick="checkName()">Submit</button>
+                </div>
+
+            
+
+            </div>
+           
+        </div>
+    
+    </div>
+</div>    
+
+<script>
+    function checkName() {
+
+       var name=document.querySelector("#name").value;
+       var phone=document.querySelector("#phone").value;
+       var cnic=document.querySelector("#cnic").value;
+       var age=document.querySelector("#age").value;
+
+
+        
+       if(name=="")
+       {
+            alert("Please enter a user name");
+            document.querySelector("#name").classList.add("is-invalid");
+            return;
+       }
+       else 
+       {
+            if( ( /\s/ ).test(name))
+                {
+                    document.querySelector("#name").classList.remove("is-invalid");
+                    document.querySelector("#name").classList.add("is-valid");             
+                }
+                else{
+                    document.querySelector("#name").classList.add("is-invalid");
+                    return;
+                }  
+        }
+
+        if(phone.length<11 || phone=="")
+        {
+            alert("Either phone number field is empty or the card number is not according to format 12341234567");
+            document.querySelector("#phone").classList.add("is-invalid");
+            return;
+        }
+        else{
+            if(  (/^\d{11}$/).test(phone))
+            {
+                document.querySelector("#phone").classList.remove("is-invalid");
+
+                document.querySelector("#phone").classList.add("is-valid");
+
+            }
+            else{
+                alert("Phone number should in the format 01231234567")
+                return;
+            }
+        }
+
+        if(cnic.length<13 || cnic=="")
+            {
+                alert("Either cnic field is empty or the cnic is not according to format 1234512345671");
+                document.querySelector("#cnic").classList.add("is-invalid");
+                return;
+            }
+            else{
+                if(  (/^\d{13}$/).test(cnic))
+                {
+                    document.querySelector("#cnic").classList.remove("is-invalid");
+                    document.querySelector("#cnic").classList.add("is-valid");
+                }
+                else{
+                    alert("card number should in the format 0000-0000-0000-0000")
+                    document.querySelector("#cnic").classList.add("is-invalid");
+                    return;
+                }
+            }
+
+            if(age.length<2 || age=="")
+            {
+                alert("Either age field is empty or the age is not according to format 00");
+                document.querySelector("#age").classList.add("is-invalid");
+                return;
+            }
+            else{
+                if(  (/^\d{2}$/).test(age))
+                {
+                    document.querySelector("#age").classList.remove("is-invalid");
+                    document.querySelector("#age").classList.add("is-valid");
+                }
+                else{
+                    alert("Age should in the format 00")
+                    document.querySelector("#age").classList.add("is-invalid");
+                    return;
+                }
+            }
+
+        alert("Success");
+       
+        
+    }
+</script>
+</body>
+</html>
