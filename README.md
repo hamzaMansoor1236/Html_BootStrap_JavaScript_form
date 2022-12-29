@@ -1,2 +1,1 @@
-# Html_BootStrap_JavaScript_form
-A form is created using HTML_Bootstrap_JavaScript
+Login form created with HTML CSS and JavaScript including the validations
